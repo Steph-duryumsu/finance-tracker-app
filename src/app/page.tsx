@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from "react";
-import {motion} from "framer-motion";
+import { useState, useEffect } from "react";
+import {motion, vw} from "framer-motion";
 import LandingSlide from "./landing/LandingSlide";
 import { Player } from '@lottiefiles/react-lottie-player';
 import WelcomeAnim from './lotties/welcome.json';
@@ -21,13 +21,23 @@ const slides = [
   },
   {
     title: "Ready to plan your Finances?",
-    lotties: startAnim,
+    lottie: startAnim,
   },
 ];
 
 
 export default function HomePage() {
   const [index, setIndex] = useState(0);
+  const [vw, setvw] = useState(0);
+
+
+  useEffect (() => {
+    const update = () => setvw(window.innerWidth);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
 
   const handleNext = () => {
     if (index < slides.length - 1) setIndex(index + 1);
@@ -41,22 +51,36 @@ export default function HomePage() {
   return (
     <div className="relative h-screen overflow-hidden font-[Poppins] bg-[#f0f8ff]">
       <motion.div 
-        className="flex h-full transition-transform"
-        animate={{x: `${index * 100}%`}}
-        transition={{ type: "string, stiffness:100"}}
+        className="flex h-full"
+        //transition-transform
+        animate={{ x: -index * vw }}
+        transition={{ type: "spring", stiffness:120, damping: 20}}
       >
+
         {slides.map((slides, i) => (
           <LandingSlide key={i}>
-            <player autoplay loop src={slides.lottie} style={{height: '300px', width: '300px' }} />
-            
-            <h1 className="text-3xl font-bold mt-6 text-[#5f9ea0]">{slides.title}</h1>
+            <Player 
+              autoplay 
+              loop 
+              src={slides.lottie} 
+              style={{height: '300px', width: '300px' }} 
+              
+            />
+
+
+            <h1 className="text-3xl font-bold mt-6 text-[#5f9ea0]text-center">
+              {slides.title}
+            </h1>
 
             {i === 2 && (
               <div className="mt-10 flex gap-4">
-                <Link href={"/auth/login"} className="px-6 py-2 bg-[#5f9ea0] text-white rounded-full">
+                <Link 
+                href={"/auth/login"} className="px-6 py-2 bg-[#5f9ea0] text-white rounded-full">
                   Login
                 </Link>
-                 <Link href={"/auth/signup"} className="px-6 py-2 border-2 border-[#5f9ea0] rounded-full text-[#5f9ea0]">
+
+                 <Link 
+                 href={"/auth/signup"} className="px-6 py-2 border-2 border-[#5f9ea0] rounded-full text-[#5f9ea0]">
                   Sign Up
                  </Link>
               </div>
