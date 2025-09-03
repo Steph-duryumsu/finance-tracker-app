@@ -7,10 +7,13 @@ import { supabase } from '@/lib/supabaseClient';
 //backend client
 import { useRouter } from 'next/navigation';
 //navigation hook
+import Image from 'next/image';
 import image1 from "@/images/image5.png";
-import image2 from '@/images/graph5.png';
-import image3 from '@/images/graph5.png';
-import image4 from '@/images/image9.png';
+import blob1 from '@/images/graph5.png';
+import blob2 from '@/images/graph5.png';
+// import image4 from '@/images/image9.png';
+import blob3 from '@/images/image7.png';
+import blob4 from '@/images/image8.png';
 
 
 export default function SignupPage() {
@@ -59,31 +62,60 @@ export default function SignupPage() {
   return (
     <div className="relative h-screen overflow-hidden">
 
-      <img
-        src={image2.src}
+      <Image
+        src={blob1}
         alt="Decorative blob"
-        className=" w-[600px] h-[600px] -ml-70 -mt-80 opacity-20"
+        height={400}
+        width={400}
+        className="w-[600px] h-[600px] -ml-70 -mt-80 opacity-20"
+      />
+
+        <Image
+          src={blob2}
+          alt="Decorative blob 2"
+          height={600}
+          width={600}
+          className="absolute -right-60 -bottom-80 w-[600px] h-[600px] opacity-20 z-0"
         />
-        <img
-          src={image3.src}
-          className="absolute -right-50 -bottom-60 w-[600px] h-[600px] opacity-20 z-0"
+
+        <Image
+          src={blob3} 
+          width={120}
+          height={120}
+          className="absolute top-20 right-10 opacity-40"
+          alt="decorative blob"
         />
-  
-        <img src={image4.src} className="-ml-50 w-[100px] h-[100px]" />
+        
+        <Image
+          src={blob4} 
+          width={100}
+          height={100}
+          className="absolute bottom-32 left-12 opacity-30"
+          alt="decorative blob"  
+        />
+
+        {/* Uncomment and import image4 if needed */}
+        {/* <Image src={image4} alt="Decorative blob 3" height={100} width={100} className="-ml-50 w-[100px] h-[100px]" /> */}
       
 
-      <div className='flex gap-20 -mt-98 ml-60'>
+      <div className='flex gap-16 -mt-80 ml-66'>
         <div>
-          <img src={image1.src} alt="characterimage" className='mt-28' />
+          <Image
+           src={image1} 
+           height={320}
+           width={320}
+           alt="characterimage" 
+           className='mt-38'
+         />
         </div>
         
-      <div className=" mt-20 bg-white p-8 rounded-lg shadow-l">
+      <div className=" mt-20 bg-white p-8 rounded-lg shadow-l mt-30">
         <h1 className="text-3xl font-bold text-center">Create an Account</h1>
 
       <form onSubmit={handleSignup} className="flex flex-col mb-5 ">
           <input
             type="text"
-            placeholder="LastName"
+            placeholder="FirstName"
             className="w-[320px] border-b-2 border-gray-400 bg-transparent py-2 p-2 rounded mt-4 "
             value={firstname}
             onChange={(e) => setFirstName(e.target.value)}

@@ -4,9 +4,9 @@ import { ReactNode } from "react";
 
 export default function LandingSlide({ children }: { children: ReactNode }) {
   return (
-    <div className="w-screen h-screen flex flex-col flex-shrink-0 items-center justify-center gap-6">
+    <section className="w-screen h-screen flex flex-col flex-shrink-0 items-center justify-center gap-4 px-6">
       {children}
-    </div>
+    </section>
   );
 }
 

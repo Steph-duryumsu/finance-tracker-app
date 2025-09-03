@@ -3,10 +3,16 @@
 
 import { IoLogoGithub } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
+import Image from "next/image";
 import image1 from "@/images/image5.png";
-import image2 from '@/images/graph5.png';
-import image3 from '@/images/graph5.png';
-import image4 from '@/images/image9.png';
+import blob1 from '@/images/graph5.png';
+import blob2 from '@/images/graph5.png';
+import blob3 from '@/images/image7.png';
+import blob4 from '@/images/image8.png';
+import blob5 from '@/images/graph6.png';
+import blob6 from '@/images/graph13.png';
+import blob7 from '@/images/graph15.png';
+// import image3 from '@/images/image9.png';
 
 
 
@@ -39,44 +45,96 @@ export default function LoginPage() {
   //Error handling logic:If there's an error, it logs the error message to the browser consoleIf successful, it logs a success messageNote: Supabase automatically handles the redirect to the OAuth provider, so no manual redirect is needed here
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div className="relative flex items-center justify-center h-screen overflow-hidden">
     
-      <img
-      src={image2.src}
+      <Image
+      src={blob1}
       alt="Decorative blob"
-      className=" w-[600px] h-[600px] -ml-70 -mt-80 opacity-20"
-      />
-      <img
-        src={image3.src}
-        className="absolute -right-50 -bottom-60 w-[600px] h-[600px] opacity-20 z-0"
+      width={400}
+      height={400}
+      className="hidden md:block absolute top-0 left-0 opacity-20 "
       />
 
-      <img src={image4.src} className="-ml-50 w-[100px] h-[100px]" />
+      <Image
+        src={blob2}
+        width={400}
+        height={400}
+        className=" md:hidden sm:hidden xl:block absolute -right-50  -bottom-60 opacity-20 z-0"
+        alt="Decorative blob"
+      />
+
+      <Image
+         src={blob3} 
+         width={120}
+         height={120}
+         className="absolutetop-20 right-10 opacity-40"
+         alt="decorative blob"
+       />
+
+      <Image
+         src={blob4} 
+         width={100}
+         height={100}
+         className="absolute bottom-32 left-12 opacity-30"
+         alt="decorative blob"  
+        />
+
+       <Image
+         src={blob5} 
+         width={100}
+         height={100}
+         className="absolute top-1/2 left-6 opacity-30"
+         alt="decorative blob"
+       />
+
+       <Image
+         src={blob6} 
+         width={100}
+         height={100}
+         className="absolute top-1/3 right-12 opacity-30"
+         alt="decorative blob"
+       />
+       
+        <Image
+         src={blob7} 
+         width={100}
+         height={100}
+         className="absolute bottom-20 right-24 opacity-40"
+         alt="decorative blob"
+       />
+       
 
 
-      <div className="flex gap-20 p-10 -mt-80 ml-70">
-        <div>
-          <img src={image1.src} alt="characterimage" />
+      <div className="flex flex-col md:flex-row items-center justify-center gap-12 p-8 rounded-2xl shadow-md backdrop-blur-md z-10">
+        <div className="flex-shrink-0">
+          <Image 
+            src={image1} 
+            width={350}
+            height={400}
+            alt="characterimage"
+            className="object-contain rounded-lg"
+          />
         </div>
 
-        <div className="mt-20">
-          <h1 className="text-2xl font-medium font-sans mb-6">Welcome Back User</h1>
+
+        <div className="text-center md:text-left">
+          <h1 className="text-2xl md:text-3xl font-semibold font-poppins mb-6">Welcome Back User 😁</h1>
 
           <button
-            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-white shadow-lg text-black font-medium transition hover:scale-105"
+            className="flex items-center justify-center gap-3 w-full px-6 py-3 mb-4 rounded-xl bg-white shadow-md text-black font-medium transition hover:scale-105 "
             onClick={() => handleOAuthLogin('google')}
           >
-            <FcGoogle className="w-5 h-5" />
+            <FcGoogle className="w-6 h-6" />
             Sign in with Google
           </button>
 
-          <h2 className="text-center my-4">OR</h2>
+          <h2 className="text-center my-3 text-gray-500">OR</h2>
 
           <button
-            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-white shadow-lg text-black font-medium transition hover:scale-105"
+            className="flex items-center justify-center gap-3 w-full px-6 py-3 mb-4 rounded-xl bg-white shadow-lg text-black font-medium transition hover:scale-105"
             onClick={() => handleOAuthLogin('github')}
           >
-            <IoLogoGithub className="w-5 h-5" />
+            <IoLogoGithub className="w-6 h-6" />
             Sign in with GitHub
           </button>
         </div>

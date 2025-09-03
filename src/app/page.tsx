@@ -12,15 +12,18 @@ import Link from 'next/link';
 
 const slides = [
   {
-    title: "Welcome to Money App",
+    title: "Welcome to Evomon",
+    subtitle: "Your smart way to plan and track expenses easily.",
     lottie: WelcomeAnim
   },
   {
     title: "Smart Budgeting, Personalized",
+    subtitle: "Plan daily, weekly or monthly budgets with ease.",
     lottie: infoAnim,
   },
   {
     title: "Ready to plan your Finances?",
+    subtitle: "Login or sign up to get started today.",
     lottie: startAnim,
   },
 ];
@@ -50,37 +53,47 @@ export default function HomePage() {
 
   return (
     <div className="relative h-screen overflow-hidden font-[Poppins] bg-[#f0f8ff]">
+
+      <div className="absolute -top-20 -left-20 w-72 h-72 bg-[#5f9ea0] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" />
+
+      <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" />
+
       <motion.div 
         className="flex h-full"
         //transition-transform
-        animate={{ x: -index * vw }}
+        animate={{ x: -index * vw}}
         transition={{ type: "spring", stiffness:120, damping: 20}}
       >
-
         {slides.map((slides, i) => (
           <LandingSlide key={i}>
             <Player 
               autoplay 
               loop 
               src={slides.lottie} 
-              style={{height: '300px', width: '300px' }} 
-              
+              style={{height: '250px', width: '250px' }} 
             />
-
-
-            <h1 className="text-3xl font-bold mt-6 text-[#5f9ea0]text-center">
-              {slides.title}
+            
+            <h1 
+              className="text-3xl font-bold mt-6 text-[#5f9ea0] text-center">
+                {slides.title}
             </h1>
+
+            <p className="text-gray-600 mt-2 text-center px-4">
+              {slides.subtitle}
+            </p>
 
             {i === 2 && (
               <div className="mt-10 flex gap-4">
                 <Link 
-                href={"/auth/login"} className="px-6 py-2 bg-[#5f9ea0] text-white rounded-full">
+                  href={"/auth/login"} 
+                  className="px-6 py-2 bg-[#5f9ea0] text-white rounded-full shadow hover:scale-105 transition"
+                >
                   Login
                 </Link>
-
                  <Link 
-                 href={"/auth/signup"} className="px-6 py-2 border-2 border-[#5f9ea0] rounded-full text-[#5f9ea0]">
+                  href={"/auth/signup"} 
+                  className="px-6 py-2 border-2 border-[#5f9ea0] rounded-full text-[#5f9ea0] hover:bg-[#5f9ea0] hover:text-white transition"
+                  >
                   Sign Up
                  </Link>
               </div>
